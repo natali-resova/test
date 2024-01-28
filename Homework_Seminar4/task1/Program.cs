@@ -39,15 +39,15 @@ bool IsEven(int sum)
 while (true)
 {
     Console.Write(" Введите целое число n или q для выхода:  ");
-    //string input = Console.ReadLine();
-    //if (input == "q") return;
-    //else
-    //{
-        int n = Int32.Parse(Console.ReadLine()!);// || string input = Console.ReadLine();
+    string input = Console.ReadLine()!;
+    if (input == "q") break;
+    else
+    {
+        int n = Convert.ToInt32(input);
         int sum = SumDigitOfNumber(n);
         bool res = IsEven(sum);
-        if (res == false /*|| input = "q"*/ ) return;
-    
+        if (res == false) break;
+    }
 }
 //Console.Write("Stop");
 
