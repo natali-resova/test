@@ -1,105 +1,60 @@
-﻿/*
-// Создать двумерный массив с размерами 3х5, состоящий из целых чисел
-
-int[,] matrix = new int[3, 5];
-Random rnd = new Random();
-for (int i = 0; i < matrix.GetLength(0); i++)
-{
-    for (int j = 0; j < matrix.GetLength(1); j++)
-    {
-        matrix[i, j] = rnd.Next(1, 11);
-    }
-}
-for (int i = 0; i < matrix.GetLength(0); i++)
-{
-    for (int j = 0; j < matrix.GetLength(1); j++)
-    {
-        Console.Write($"{matrix[i, j]} ");
-    }
-    Console.WriteLine();
-}
+﻿/*1. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве,
+ и возвращает значение этого элемента или же указание, что такого элемента нет:
+  "Позиция по рядам выходит за пределы массива" или
+"Позиция по колонкам выходит за пределы массива"
 */
+int[,] numbers = new int[,] {
+    {1, 2, 3, 4},
+    {5, 6, 7, 8},
+    {9, 10, 11, 12}
+};
+int x = -2;
+int y = 2;
+//Console.WriteLine(numbers[1, 2]);
+
+bool ValidatePozition(int[,] numbers)
+{
+    if (x - 1 < 0 || x - 1 > numbers.GetLength(0))
+    {
+        Console.WriteLine("Позиция по рядам выходит за пределы массива");
+
+    }
+    else
+    {
+
+        if (y - 1 < 0 || y - 1 > numbers.GetLength(1))
+        {
+            Console.WriteLine("Позиция по колонкам выходит за пределы массива");
+        }
+        else
+        {
+
+            return true;
+
+        }
+    }
+}
+ValidatePozition(numbers);
+
 /*
-//Создание массива в виде функции
-int[,] CreateMatrix(int rowsCount, int columnsCount)
+//int FindElementByPosition(int[,] array)
+//{
+int i = x - 1;
+int j = y - 1;
+int Elements = 0;
+foreach (int e in numbers)
+
+//for (int j = 0; j < numbers.GetLength(1); j++)
 {
-    int[,] matrix = new int[rowsCount, columnsCount];
-    Random rnd = new Random();
-    for (int i = 0; i < matrix.GetLength(0); i++)
+    if (ValidatePozition(numbers) == true)
     {
-        for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-            matrix[i, j] = rnd.Next(1, 11);
-        }
-    }
-    return matrix;
-}
-// Вывод на экран
-void ShowMatrix(int[,] matrix)
-{
-    for (int i = 0; i < matrix.GetLength(0); i++)
-    {
-        for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-            Console.Write($"{matrix[i, j]} ");
-        }
-        Console.WriteLine();
+        Elements = numbers[i, j];
     }
 }
-int[,] matrix = CreateMatrix(4, 5);
-ShowMatrix(matrix);
-*/
+
 /*
-int[,] table1 = new int[2, 4] {
-    {1, 1, 1, 1}
-    {2, 2, 2, 2}
-    };
-
-int[,] table2 = new int[,] {
-    {1, 1, 1, 1}
-    {2, 2, 2, 2}
-    };
-    */
-
-int[,] CreateMatrix(int rowsCount, int columnsCount)
-{
-    int[,] matrix = new int[rowsCount, columnsCount];
-    Random rnd = new Random();
-    for (int i = 0; i < matrix.GetLength(0); i++)
-    {
-        for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-            matrix[i, j] = rnd.Next(1, 1000);
-        }
-    }
-    return matrix;
+return numbers;
 }
-
-int[,] matrix = CreateMatrix(7, 4); //вход
-foreach (int e in matrix)
-{
-    if (IsInteresting(e) = true)
-    {
-        Console.Write(e);
-    }
-}
-bool IsInteresting(int value)
-{
-    int sumOfDigits = GetSumOfDigits(value);
-    if (sumOfDigit % 2 == 0)
-    { 
-        return true;
-    }    
-    return false;
-}
-
-int GetSumOfDigits(value)
-{
-    int sum = 0;
-    while(value > 0)
-    { 
-        sum = sum + value % 10;
-        value = value / 10;
-    }
-    return sum;
-}
+FindElementByPosition(array);*/
+//Console.WriteLine(numbers[i, j]);*/
+Console.WriteLine(Elements);
